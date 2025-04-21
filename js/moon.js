@@ -1,6 +1,6 @@
 import * as THREE from "three";
 
-const img = "../img/moon.png";
+const img = "../img/moon.jpeg";
 
 class App {
   constructor() {
