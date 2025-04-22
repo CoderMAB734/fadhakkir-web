@@ -534,7 +534,7 @@ const main_code = (latitude, longitude) => {
   );
 
   //start of moon phase calculator
-  /*
+  
   const getJulianDate = (date = new Date()) => {
     const time = date.getTime();
     const tzoffset = date.getTimezoneOffset();
@@ -631,10 +631,9 @@ const main_code = (latitude, longitude) => {
   };
 
   //moon phase calculater is slightly off(by 2 days) **not anymore
-  //getLunarPhase(new Date());
+  getLunarPhase(new Date());
 
   //end of moon phase calculate
-  */
 
   //important functions
   const resetPrayerTimeStyle = function () {
@@ -2431,7 +2430,7 @@ eyeDropperBtn.addEventListener('click', async () => {
       document.querySelector(".dhikr-name-input").value !== ""
         ? document
             .querySelector(".dhikr-name-input")
-            .value.replace(/[^a-zA-Z0-9]/g, "")
+            .value.replace(/[^a-zA-Z0-9!#$%&'()*+,\-./:<=>?@[\]^_`{|}~]/g, "")
         : " ";
     for (let i = 0; i < name.length; i++) {
       //verifying name
@@ -2455,7 +2454,7 @@ eyeDropperBtn.addEventListener('click', async () => {
       document.querySelector(".dhikr-total-input").value !== ""
         ? document
             .querySelector(".dhikr-total-input")
-            .value.replace(/[^a-zA-Z0-9]/g, "")
+            .value.replace(/[^a-zA-Z0-9!#$%&'()*+,\-./:<=>?@[\]^_`{|}~]/g, "")
         : 100;
 
     //creating dhikr

@@ -14,10 +14,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-async function getDocument(musjid) {
-	const docRef = doc(db, "newcastle-musjid-times", `newcastle-musjid-times-${musjid}`);
+async function getDocument(group, name) {
+	const docRef = doc(db, group, name);
 	const docSnap = await getDoc(docRef);
 	return docSnap.data();
+}
+
+async function getMusjid(musjid) {
+	return getDocument("newcastle-musjid-times", `newcastle-musjid-times-${musjid}`);
 }
 
 /////////////////
@@ -46,15 +50,15 @@ let musjid_loaded;
 const set_musjid_times = async function() {
 	musjid_times = {
 		//sehri end//fajr//sunrise//zawaal//duhr//asr//sunset//maghrib//isha//midnight//sunday-dhuhr//jumua//
-		greeves_str: ['', (await getDocument('greeves_str')).fajr, '', '', (await getDocument('greeves_str')).duhr, (await getDocument('greeves_str')).asr, '', `${musjid_maghrib_time}`, (await getDocument('greeves_str')).isha, '', (await getDocument('greeves_str')).duhr_sun, (await getDocument('greeves_str')).juma],
-		victoria_rd: ['', (await getDocument('victoria_rd')).fajr, '', '', (await getDocument('victoria_rd')).duhr, (await getDocument('victoria_rd')).asr, '', `${musjid_maghrib_time}`, (await getDocument('victoria_rd')).isha, '', (await getDocument('victoria_rd')).duhr_sun, (await getDocument('victoria_rd')).juma],
-		darul_uloom: ['', (await getDocument('darul_uloom')).fajr, '', '', (await getDocument('darul_uloom')).duhr, (await getDocument('darul_uloom')).asr, '', `${musjid_maghrib_time}`, (await getDocument('darul_uloom')).isha, '', (await getDocument('darul_uloom')).duhr_sun, (await getDocument('darul_uloom')).juma],
-		nmc: ['', (await getDocument('nmc')).fajr, '', '', (await getDocument('nmc')).duhr, (await getDocument('nmc')).asr, '', `${musjid_maghrib_time}`, (await getDocument('nmc')).isha, '', (await getDocument('nmc')).duhr_sun, (await getDocument('nmc')).juma],
-		town: ['', (await getDocument('town')).fajr, '', '', (await getDocument('town')).duhr, (await getDocument('town')).asr, '', `${musjid_maghrib_time}`, (await getDocument('town')).isha, '', (await getDocument('town')).duhr_sun, (await getDocument('town')).juma],
-		centre_street: ['', (await getDocument('centre_street')).fajr, '', '', (await getDocument('centre_street')).duhr, (await getDocument('centre_street')).asr, '', `${musjid_maghrib_time}`, (await getDocument('centre_street')).isha, '', (await getDocument('centre_street')).duhr_sun, (await getDocument('centre_street')).juma],
-		fernwood: ['', (await getDocument('fernwood')).fajr, '', '', (await getDocument('fernwood')).duhr, (await getDocument('fernwood')).asr, '', `${musjid_maghrib_time}`, (await getDocument('fernwood')).isha, '', (await getDocument('fernwood')).duhr_sun, (await getDocument('fernwood')).juma],
-		musjid_as_siddique: ['', (await getDocument('musjid_as_siddique')).fajr, '', '', (await getDocument('musjid_as_siddique')).duhr, (await getDocument('musjid_as_siddique')).asr, '', `${musjid_maghrib_time}`, (await getDocument('musjid_as_siddique')).isha, '', (await getDocument('musjid_as_siddique')).duhr_sun, (await getDocument('musjid_as_siddique')).juma],
-		hilldrop: ['', (await getDocument('hilldrop')).fajr, '', '', (await getDocument('hilldrop')).duhr, (await getDocument('hilldrop')).asr, '', `${musjid_maghrib_time}`, (await getDocument('hilldrop')).isha, '', (await getDocument('hilldrop')).duhr_sun, (await getDocument('hilldrop')).juma],
+		greeves_str: ['', (await getMusjid('greeves_str')).fajr, '', '', (await getMusjid('greeves_str')).duhr, (await getMusjid('greeves_str')).asr, '', `${musjid_maghrib_time}`, (await getMusjid('greeves_str')).isha, '', (await getMusjid('greeves_str')).duhr_sun, (await getMusjid('greeves_str')).juma],
+		victoria_rd: ['', (await getMusjid('victoria_rd')).fajr, '', '', (await getMusjid('victoria_rd')).duhr, (await getMusjid('victoria_rd')).asr, '', `${musjid_maghrib_time}`, (await getMusjid('victoria_rd')).isha, '', (await getMusjid('victoria_rd')).duhr_sun, (await getMusjid('victoria_rd')).juma],
+		darul_uloom: ['', (await getMusjid('darul_uloom')).fajr, '', '', (await getMusjid('darul_uloom')).duhr, (await getMusjid('darul_uloom')).asr, '', `${musjid_maghrib_time}`, (await getMusjid('darul_uloom')).isha, '', (await getMusjid('darul_uloom')).duhr_sun, (await getMusjid('darul_uloom')).juma],
+		nmc: ['', (await getMusjid('nmc')).fajr, '', '', (await getMusjid('nmc')).duhr, (await getMusjid('nmc')).asr, '', `${musjid_maghrib_time}`, (await getMusjid('nmc')).isha, '', (await getMusjid('nmc')).duhr_sun, (await getMusjid('nmc')).juma],
+		town: ['', (await getMusjid('town')).fajr, '', '', (await getMusjid('town')).duhr, (await getMusjid('town')).asr, '', `${musjid_maghrib_time}`, (await getMusjid('town')).isha, '', (await getMusjid('town')).duhr_sun, (await getMusjid('town')).juma],
+		centre_street: ['', (await getMusjid('centre_street')).fajr, '', '', (await getMusjid('centre_street')).duhr, (await getMusjid('centre_street')).asr, '', `${musjid_maghrib_time}`, (await getMusjid('centre_street')).isha, '', (await getMusjid('centre_street')).duhr_sun, (await getMusjid('centre_street')).juma],
+		fernwood: ['', (await getMusjid('fernwood')).fajr, '', '', (await getMusjid('fernwood')).duhr, (await getMusjid('fernwood')).asr, '', `${musjid_maghrib_time}`, (await getMusjid('fernwood')).isha, '', (await getMusjid('fernwood')).duhr_sun, (await getMusjid('fernwood')).juma],
+		musjid_as_siddique: ['', (await getMusjid('musjid_as_siddique')).fajr, '', '', (await getMusjid('musjid_as_siddique')).duhr, (await getMusjid('musjid_as_siddique')).asr, '', `${musjid_maghrib_time}`, (await getMusjid('musjid_as_siddique')).isha, '', (await getMusjid('musjid_as_siddique')).duhr_sun, (await getMusjid('musjid_as_siddique')).juma],
+		hilldrop: ['', (await getMusjid('hilldrop')).fajr, '', '', (await getMusjid('hilldrop')).duhr, (await getMusjid('hilldrop')).asr, '', `${musjid_maghrib_time}`, (await getMusjid('hilldrop')).isha, '', (await getMusjid('hilldrop')).duhr_sun, (await getMusjid('hilldrop')).juma],
 	}
 
 	//changing musjid_loaded
