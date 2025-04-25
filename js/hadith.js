@@ -17,11 +17,23 @@ const db = getFirestore(app);
 async function getDocument(group, name) {
 	const docRef = doc(db, group, name);
 	const docSnap = await getDoc(docRef);
+
+	document.querySelectorAll('.recommended-description-loader').forEach(function(el) {
+		el.style.display = 'none';
+	})
 	return docSnap.data();
 }
 
 document.querySelectorAll('.recommended').forEach(function(el) {
     el.addEventListener('click', async function() {
+		document.querySelectorAll('.recommended-description').forEach(function(el) {
+			el.textContent = '';
+		})
+
+		document.querySelectorAll('.recommended-description-loader').forEach(function(el) {
+			el.style.display = 'block';
+		})
+
         document.querySelector('.description-arabic').textContent = (await getDocument("dhikr-hadiths", el.querySelector('.recommended-name').textContent)).arabic;
 		document.querySelector('.description-translation').textContent = (await getDocument("dhikr-hadiths", el.querySelector('.recommended-name').textContent)).translation;
 		document.querySelector('.description-reference').textContent = (await getDocument("dhikr-hadiths", el.querySelector('.recommended-name').textContent)).reference;

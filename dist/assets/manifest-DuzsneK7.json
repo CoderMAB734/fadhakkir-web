@@ -1,9 +1,0 @@
-{
-  "short_name": "Fadhakkir",
-  "name": "Fadhakir",
-  "display": "standalone",
-  "id": "/?source=pwa",
-  "start_url": "/?source=pwa",
-  "background_color": "#ecba82",
-  "scope": "/"
-}
